@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  background-color: rgba(222, 215, 204, 0.8);
+}
+
+.grid-container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: repeat(9, 1fr) ;;
+  /*first row height = 10px; second row height = 100px and so on*/
+  grid-template-rows: repeat(10, 1fr) ;
+  background-color: #2297F3;
+  padding: 11px;
+}
+
+.grid-container > div {
+  background-color: rgba(253, 215, 204, 0.8);
+  border: 1px solid rgba(1, 1, 1, 0.8);
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.item0 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.grid_heading {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end:2;
+}
+
+.grid_map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end:8;
+}
+
+.grid_dial_area_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 6;
+    grid-column-end: 10;
+    grid-row-start: 2;
+    grid-row-end:11;
+
+}
+
+.grid_dial_area_bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 8;
+    grid-row-end:11;
+
+}
+
+
+.grid_dial_right_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 6;
+    grid-column-end: 10;
+    grid-row-start: 4;
+    grid-row-end:6;
+
+}
+
+
+.item3_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 9;
+    grid-column-end: 10;
+    grid-row-start: 2;
+    grid-row-end:50;
+
+}
+
+
+.item4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 35;
+    grid-row-end:50;
+}
+
+
+.item5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+
+.item6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 5;
+    grid-column-end: 7;
+}
+
+
+.item7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-start: 7;
+    grid-column-end: 9;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+  <div class="grid_heading"> Heading </div>
+  <div class="grid_map"> Map </div>
+  <div class="grid_dial_area_right">Dial 1</div>
+  <div class="grid_dial_area_bottom">Dial 2</div>
+ <!--
+  <div class="item3_1">Dial 2</div>
+  <div class="item3_2">Info Bar</div>
+ <div class="item4">Dial 2</div>
+  <div class="item5">Dial 3</div>
+  <div class="item6">Dial 4</div>
+  <div class="item7">Dial 5</div>
+    -->
+  </div>
+
+</body>
+</html>
+
