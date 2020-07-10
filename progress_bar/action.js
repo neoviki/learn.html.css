@@ -1,4 +1,5 @@
 let element = document.getElementById("radial_dial_1");
+let element1 = element.getElementsByClassName("value")[0];
 
 let root = document.documentElement;
 
@@ -37,6 +38,7 @@ async function animate_dial() {
   while (1) {
     ctr = (ctr + 1) % 100;
     element.style.setProperty("--dial_position", ctr);
+    element1.innerHTML = ctr;
     await Sleep(100);
   }
 }
