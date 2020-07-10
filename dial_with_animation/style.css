@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS VARIABLES */
+:root {
+  --dark: #000;
+  --dial_margin: linear-gradient(45deg, transparent, transparent, 40%, #e5f412);
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  --dial-radius: 50%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40rem;
+  background: var(--dark);
+}
+
+/* Create a circular dial*/
+.dial {
+  background: var(--dial_margin);
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: var(--dial-radius);
+  animation: dial_animation 2s linear infinite;
+}
+
+/* Create a circular dial*/
+.dial:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  background: var(--dark);
+  border-radius: var(--dial-radius);
+  z-index: 1000;
+}
+
+.dial:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: var(--dial_margin);
+  border-radius: var(--dial-radius);
+  z-index: 2000;
+  z-index: 1;
+  filter: blur(
+    20px
+  ); /* Create a gaussian blur effect around the circular dial*/
+}
+
+@keyframes dial_animation {
+  0% {
+    transform: rotate(0deg); /* rotate object */
+    filter: hue-rotate(0deg); /* change color while rotating*/
+  }
+  100% {
+    transform: rotate(360deg); /* rotate object */
+    filter: hue-rotate(360deg); /* change color while rotating*/
+  }
+}
