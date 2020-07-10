@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+ Button Colors:
+    #21EBFF - Cyan
+    #FF91FF - Pink 
+    #84E421 - Green
+*/
+
+/* CSS VARIABLES */
+:root {
+  --dark: #000;
+  --button-color: #83e422;
+  --button-width: 200px;
+  --button-on-color-outer-circle: var(--button-color);
+  --button-on-color-inner-circle: var(--button-color);
+
+  /* inner shadow is counted from center of circle towards diameter */
+
+  /* #00a1ff*/
+  --button-on-inner-shadow-1: var(--button-color);
+
+  /* #00a1ff*/
+  --button-on-inner-shadow-2: var(--button-color);
+
+  --button-inner-switch-diameter: 2rem;
+
+  /* Border is counted from Outside of the Circle to Inside of Circle*/
+
+  /* #080808 */ /*cyan*/
+  --button-off-color-outer-circle-1: #000;
+
+  /*red*/ /*transparent*/
+  --button-off-color-outer-circle-2: rgba(0, 0, 0, 0);
+
+  /*#000*/ /*green*/
+  --button-off-color-outer-circle-3-top-half: #000;
+
+  /* rgba(0, 0, 0, 1) */ /*green*/
+  --button-off-color-outer-circle-3-bottom-half: #000;
+
+  /* rgba(255, 255, 255, 0.5) */ /*magenta*/
+  --button-off-color-outer-circle-4-top-half: rgba(255, 255, 255, 0.5);
+
+  /* rgba(0, 0, 0, 1) */ /*magenta*/
+  --button-off-color-outer-circle-4-bottom-half: #000;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  min-height: 40rem;
+  background: var(--dark);
+}
+
+label {
+  position: relative;
+  width: var(--button-width);
+  height: var(--button-width);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+/*neon power switch property : Create a circular object with shadow around font awesome - power switcg & checkbox*/
+label .neon_power_switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #1b1b1b;
+  border-radius: 50%;
+  box-shadow: 0 3px 4px var(--button-off-color-outer-circle-3-bottom-half),
+    inset 0 -1px 6px var(--button-off-color-outer-circle-4-bottom-half),
+    inset 0 2px 3px var(--button-off-color-outer-circle-4-top-half),
+    0 0 0 2px var(--button-off-color-outer-circle-3-top-half),
+    0 0 0 5px var(--button-off-color-outer-circle-2),
+    0 0 0 6px var(--button-off-color-outer-circle-1);
+}
+
+label input[type="checkbox"] {
+  -webkit-appearance: none;
+}
+
+/* Font Awesome Power Button Property : Overriding*/
+label .fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--button-inner-switch-diameter);
+  color: var(--dark);
+}
+
+label input[type="checkbox"]:checked ~ .fa {
+  color: var(--button-on-color-inner-circle);
+  text-shadow: 0 0 15px var(--button-on-inner-shadow-1),
+    0 0 30px var(--button-on-inner-shadow-2);
+}
+
+label input[type="checkbox"]:checked ~ .neon_power_switch {
+  box-shadow: 0 0 0 var(--button-off-color-outer-circle-3-bottom-half),
+    inset 0 -2px 5px var(--button-off-color-outer-circle-4-bottom-half),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 0 0 2px var(--button-off-color-outer-circle-3-top-half),
+    0 0 0 5px var(--button-off-color-outer-circle-2),
+    0 0 0 6px var(--button-on-color-outer-circle); /* Circle Around  Circle*/
+}
