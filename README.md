@@ -15,4 +15,4 @@
 
 #### Responsive Layout 1 ( examples/layout_1 )
 
-! [alt text] (images/grid_layout1.png)
+! [alt text] (images/grid_layout1.jpeg)
