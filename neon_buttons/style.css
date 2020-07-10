@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/*
+ Button Colors:
+    #21EBFF - Cyan
+    #FF91FF - Pink 
+    #84E421 - Green
+*/
+/* CSS VARIABLES */
+:root {
+  --dark: #000;
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  --hover-trans-delay: 0.3;
+  --button-color: #84e421;
+  --button-border-lenght: 10px;
+  --button-border-thickness: 2px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40rem;
+  background: var(--dark);
+}
+
+/* Create a button*/
+.neon_button {
+  position: relative;
+  padding: 10px 30px;
+  margin: 0 15px;
+  color: var(--button-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 19px;
+  transition: 0.5s;
+  overflow: hidden;
+  /*Create a reflection of button*/
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0003);
+}
+
+.neon_button:hover {
+  background-color: var(--button-color);
+  color: #111;
+  box-shadow: 0 0 50px var(--button-color);
+  transition-delay: var(--hover-trans-delay);
+}
+
+.neon_button:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+/* Create Inverted "L" shape on top left corner of button*/
+.neon_button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--button-border-lenght);
+  height: var(--button-border-lenght);
+  border-top: var(--button-border-thickness) solid var(--button-color);
+  border-left: var(--button-border-thickness) solid var(--button-color);
+  transition: 0.5s;
+  transition-delay: var(--hover-trans-delay);
+}
+
+/* Create Mirrored "L" shape on bottom right corner of button*/
+
+.neon_button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: var(
+    --button-border-lenght
+  ); /* Button Bottom Right Corner - Line Width*/
+  height: var(
+    --button-border-lenght
+  ); /* Button Bottom Right Corner - Line Height*/
+  border-bottom: var(--button-border-thickness) solid var(--button-color);
+  border-right: var(--button-border-thickness) solid var(--button-color);
+  transition: 0.3s;
+  transition-delay: var(--hover-trans-delay);
+}
+
+.neon_button:hover::after {
+  width: 100%;
+  height: 100%;
+}
