@@ -21,6 +21,6 @@
 
 ![alt text](images/analog_compass_2.png)
 
-#### Responsive Layout 1 ( examples/layout_1 )
+#### Responsive Layout 1 ( examples/css_grid_with_screen_size_ruler )
 
-![alt text](images/grid_layout1.jpeg)
+![alt text](images/grid_with_ruler_1.png)
