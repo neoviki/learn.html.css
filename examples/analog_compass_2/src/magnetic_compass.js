@@ -15,9 +15,27 @@ function blue_compass(container_id, w, h) {
 
   var main_container = document.getElementById(container_id);
   main_container.appendChild(cv);
+
+  var guage_major_ticks_array = [];
+  var guage_major_ticks_interval = 30;
+  var guage_start_value = 0;
+  var guage_end_value = 360;
+  var guage_minor_ticks_interval = guage_major_ticks_interval / 2;
+  var array_length = guage_end_value / guage_major_ticks_interval;
+
+  for (i = 0; i < array_length; i++) {
+    guage_major_ticks_array[i] = (i * guage_major_ticks_interval).toString();
+  }
+
+  guage_major_ticks_array[i] = guage_start_value.toString();
+  console.log(guage_major_ticks_array);
+
   /*
   majorTicks: ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"],
   minorTicks: 22,
+
+  majorTicks: ["0", "45", "90", "135", "180", "225", "270", "315", "0"],
+
   */
 
   blue_compass_obj = new RadialGauge({
@@ -26,8 +44,8 @@ function blue_compass(container_id, w, h) {
     height: h,
     minValue: 0,
     maxValue: 360,
-    majorTicks: ["0", "45", "90", "135", "180", "225", "270", "315", "0"],
-    minorTicks: 3 /* Every 15 degrees */,
+    majorTicks: guage_major_ticks_array,
+    minorTicks: guage_minor_ticks_interval /* Every 5 degrees */,
     ticksAngle: 360,
     startAngle: 180,
     strokeTicks: false,
