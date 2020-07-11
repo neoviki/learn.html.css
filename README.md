@@ -13,6 +13,11 @@
 
 ![alt text](images/neon_button.gif)
 
+#### Responsive Layout 1 ( examples/analog_compass_1 )
+
+![alt text](images/analog_compass_1.png)
+
+
 #### Responsive Layout 1 ( examples/layout_1 )
 
 ![alt text](images/grid_layout1.jpeg)
