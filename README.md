@@ -13,14 +13,18 @@
 
 ![alt text](images/neon_button.gif)
 
-#### Responsive Layout 1 ( examples/analog_compass_1 )
+#### Analog Compass with string ( examples/analog_compass_1 )
 
 ![alt text](images/analog_compass_1.png)
 
-#### Responsive Layout 1 ( examples/analog_compass_2 )
+#### Analog Compass with numbers ( examples/analog_compass_2 )
 
 ![alt text](images/analog_compass_2.png)
 
-#### Responsive Layout 1 ( examples/css_grid_with_screen_size_ruler )
+#### CSS Grids with Ruler ( examples/css_grid_with_screen_size_ruler )
 
 ![alt text](images/grid_with_ruler_1.png)
+
+#### 3x3 CSS Responsive Grids ( examples/css_grids_3x3 )
+
+![alt text](images/css_3x3_square_grids.png)
