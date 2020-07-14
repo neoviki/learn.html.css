@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* CSS VARIABLE */
+
+:root {
+  --dial_radius: 60px; /*70*/
+  --dial_pos_x: 60px; /*70*/
+  --dial_pos_y: 60px; /*70*/
+  /* --dial_radius  vs --dial_zero_callibrated_value
+    
+    60px : 376px
+    70px : 440px
+   */
+  --dial_zero_callibrated_value: 376px;
+
+  /* Colors */
+  --c-blue-1: #1b1bff;
+  --c-black-1: #000009;
+  --c-black-2: #222;
+  --c-black-3: #1B1B1B;
+  --c-black-4: #101112;
+  --c-white-1: #fff;
+  --c-red-1: #C81515;
+  --c-grey-1: #4E5256;
+  --c-grey-2: #515255;
+  --c-grey-3: #515432;
+  --c-grey-4: #ACB2BB;
+  --c-grey-5: #ADAF92;
+  --c-green-1: #1E8E10;
+  --c-green-2: #118E32;
+
+  --circular-meter-color: var(--c-green-1);
+  
+  --top-color: var(--c-black-3);
+  --middle-color: var(--c-black-2);    
+  --bottom-color: var(--c-black-3);   
+  
+  --gc-1: linear-gradient(0deg, var(--bottom-color), var(--middle-color), var(--top-color));
+  --gc-2: linear-gradient(0deg, var(--c-blue-1), var(--c-black-2), var(--c-black-3));
+  --gc-3: linear-gradient(0deg, #F7CC76, #A473D0, #31ECE9);
+  --gc-4: linear-gradient(0deg, #F7CC76, #A473D0, #31ECE9);
+}
+
+/*
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #101010;
+}
+*/
+
+.radial_dial {
+  position: relative;
+  width: 250px; /*900px*/
+  height: 250px; /*auto*/
+  display: flex;
+  justify-content: space-around;
+  --dial_position: 0;
+  padding-top:40px;
+}
+
+/* radial_dial segment bounce during hover */
+.radial_dial .card {
+  position: relative;
+  /*background: var(--gc-1);*/
+  background: var(--gc-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%; /* 250 px Radial Dial Card width*/
+  height: 80%; /* 300 px Radial Dial Card Height*/
+  border-radius: 50px; /* Radial Dial Card dimention square (small number) to ellipse (large number)*/
+  text-align: center;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.radial_dial .card:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -50%; /* Create a light split in the cards */
+  background: rgb(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.radial_dial .card:hover {
+  transform: translateY(-10px);
+  radial_dial_box-shadow: 0 15px 35px rgb(0, 0, 0, 0.5);
+}
+
+.box {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 50px #000;
+  background: #222;
+  z-index: 1000;
+}
+
+.box .value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #777;
+  font-weight: 600;
+  font-size: 40px;
+  transition: 0.5s;
+}
+
+.box .unit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #777;
+  font-size: 15px;
+  padding-top: 40px; /*40px*/
+  padding-left: 5px;
+  transition: 0.5s;
+}
+
+.card:hover .box .unit {
+  color: #fff;
+  transition: 0.5s;
+}
+
+.card:hover .box .value {
+  color: #fff;
+  font-size: 50px;
+}
+
+.card .box .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /*center*/
+  align-items: center; /*center*/
+  border-radius: 50%;
+  color: #777;
+  font-weight: 700;
+  font-size: 14px;
+  padding-top: 90px; /*79*/
+  transition: 0.5s;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.card:hover .box .text {
+  color: #fff;
+}
+
+svg {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  z-index: 1000;
+}
+
+/* Draw Circle 1*/
+svg circle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #191919;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+}
+
+.radial_dial .circle1 {
+  cx: var(--dial_pos_x);
+  cy: var(--dial_pos_y);
+  r: var(--dial_radius);
+}
+/* Draw Circle 2 on top of Circle 1 ( Almost Same Property )*/
+/* Set the initial percentage movement for the dial*/
+.radial_dial .circle2 {
+  cx: var(--dial_pos_x);
+  cy: var(--dial_pos_y);
+  r: var(--dial_radius);
+  /* Create segments in circle like clock */
+  stroke-dasharray: var(--dial_zero_callibrated_value);
+  /* Create segments in circle like clock */
+  stroke-dashoffset: var(--dial_zero_callibrated_value);
+}
+
+/* Draw Circle 2 on top of first circle with color green ( semi circle)*/
+.radial_dial .circle2 {
+  /*comment the following line to callibrate "--dial_zero_callibrated_value"*/
+  stroke-dashoffset: calc(
+    var(--dial_zero_callibrated_value) -
+      (var(--dial_zero_callibrated_value) * var(--dial_position)) / 100
+  );
+  stroke: var(--circular-meter-color); 
+}

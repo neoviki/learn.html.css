@@ -75,5 +75,5 @@ function display_current_value() {
 }
 
 blue_compass("main_container", 200, 200);
-update_compass_value(10);
+update_compass_value(140);
 display_current_value();
