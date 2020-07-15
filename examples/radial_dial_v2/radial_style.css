@@ -23,7 +23,9 @@
   --dial_box_height: 400px;
   --dial-box-text-color:  var(--c-grey-6); 
   --dial_radius: 60px; /*70*/
-  --dial_circumference: calc(2 * var(--dial_radius) * 3.14);
+  --pi: 3.15; /*3.1415*/
+
+  --dial_circumference: calc(2 * var(--dial_radius) * var(--pi));
   --dial_one_percent: calc(var(--dial_circumference) / 100);
 
   --dial_pos_x: 60px; /*70*/
@@ -36,13 +38,22 @@
   /* Initial pixel value when the dial set to 0 - manually calibrate it according to --dial_radius*/
   /* --dial_zero_value: 376px; */
   --dial_zero_value: var(--dial_circumference);
-  
+
   /* Set this value to 0 to calibrate "--dial_zero_value"*/
   /* Set this value to 1 by default"*/
   --calibrate_flag: 1;
 
   --dial-counter-text-color: var(--c-grey-6);
   --dial-units-text-color: var(--c-grey-6);
+
+  /* Both inner circle and outer circle */
+  --displace-down: 5px;
+  --displace-left: 5px;
+
+  /*affect inner and outer circle position*/
+  /*affects diameter of middle circle */
+  /*larger(val) => larger the diameter of middle circle*/
+  --box-size: 130px;/*130px*/
 
   --top-color: var(--c-black-3);
   --middle-color: var(--c-black-2);    
@@ -126,8 +137,8 @@
 
 .box {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: var(--box-size); /*120px*/
+  height: var(--box-size); /*120px*/
   border-radius: 50%;
   box-shadow: inset 0 0 50px #000;
   background: #222;
@@ -215,9 +226,7 @@ svg circle {
   height: 100%;
   fill: none;
   stroke-linecap: round;
-  --displace-down: 5px;
-  --displace-left: 5px;
-  transform: translate(var(--displace-left), var(--displace-left));
+  transform: translate(var(--displace-left), var(--displace-down));
 }
 
 .radial_dial .outer_circle {
@@ -236,13 +245,9 @@ svg circle {
   r: var(--dial_radius);
   
   /* Create segments in circle like clock */
-  /* stroke-dasharray:  calc( var(--dial_zero_value) + 0px ); */
   stroke-dasharray: var(--c-inner-circle-segments);
   
   /* Create segments in circle like clock */
-  /*stroke: var(--circular-meter-color);*/ 
- /* --meter-reading-increment: calc(var(--dial_zero_value) - (((var(--dial_zero_value) * var(--dial_position))/100)));
-  */
   --meter-abs-percentage-increase: calc( var(--dial_position) * var(--dial_one_percent) );
   --meter-reading-increment-forward: calc(var(--dial_zero_value) - var(--meter-abs-percentage-increase));;
   --meter-reading-increment-reverse: calc(var(--dial_zero_value) + var(--meter-abs-percentage-increase));
