@@ -1,36 +1,50 @@
 /* CSS VARIABLE */
 
+/* CARD{
+ *          BOX{
+ *                  SVG{
+ *                      CIRCLE{}
+ *                  }
+ *          }
+ * }
+ *
+ */
 :root {
   /* Color Codes */
   --c-blue-1: #1b1bff;
   --c-black-1: #000009;
   --c-black-2: #222;
-  --c-black-3: #1B1B1B;
+  --c-black-3: #1b1b1b;
   --c-black-4: #101112;
   --c-white-1: #fff;
-  --c-red-1: #C81515;
-  --c-grey-1: #4E5256;
+  --c-red-1: #c81515;
+  --c-grey-1: #4e5256;
   --c-grey-2: #515255;
   --c-grey-3: #515432;
-  --c-grey-4: #ACB2BB;
-  --c-grey-5: #ADAF92;
+  --c-grey-4: #acb2bb;
+  --c-grey-5: #adaf92;
   --c-grey-6: #777;
-  --c-green-1: #1E8E10;
-  --c-green-2: #118E32;
+  --c-green-1: #1e8e10;
+  --c-green-2: #118e32;
 
+  --dial_radius: 90px; /*70*/
 
-  --dial_box_width: 400px;
-  --dial_box_height: 400px;
-  --dial-box-text-color:  var(--c-grey-6); 
-  --dial_radius: 60px; /*70*/
+  --dial_box_width: calc(7 * var(--dial_radius));
+  --dial_box_height: calc(7 * var(--dial_radius));
+  --dial-box-text-color: var(--c-grey-6);
   --pi: 3.15; /*3.1415*/
-
+  --dial-thickness: 10px;
   --dial_circumference: calc(2 * var(--dial_radius) * var(--pi));
   --dial_one_percent: calc(var(--dial_circumference) / 100);
 
-  --dial_pos_x: 60px; /*70*/
-  --dial_pos_y: 60px; /*70*/
- 
+  /*affect inner and outer circle position*/
+  /*affects diameter of middle circle */
+  /*larger(val) => larger the diameter of middle circle*/
+  --box-size: calc((2 * var(--dial_radius)) + var(--dial-thickness)); /*130px*/
+
+  --dial_pos_x: calc(var(--dial_radius) + 0); /*70*/
+  --dial_pos_y: calc(var(--dial_radius) + 0); /*70*/
+
   /* --dial_radius  vs --dial_zero_value
     60px : 376px
     70px : 440px
@@ -47,33 +61,42 @@
   --dial-units-text-color: var(--c-grey-6);
 
   /* Both inner circle and outer circle */
-  --displace-down: 5px;
-  --displace-left: 5px;
+  --displace-down: calc(var(--dial-thickness) / 2);
+  --displace-left: calc(var(--dial-thickness) / 2);
 
-  /*affect inner and outer circle position*/
-  /*affects diameter of middle circle */
-  /*larger(val) => larger the diameter of middle circle*/
-  --box-size: 130px;/*130px*/
+  --middle-circle-color: none;
 
   --top-color: var(--c-black-3);
-  --middle-color: var(--c-black-2);    
-  --bottom-color: var(--c-black-3);   
-  
-  --gc-1: linear-gradient(0deg, var(--bottom-color), var(--middle-color), var(--top-color));
-  --gc-2: linear-gradient(0deg, var(--c-blue-1), var(--c-black-2), var(--c-black-3));
-  --gc-3: linear-gradient(0deg, #F7CC76, #A473D0, #31ECE9);
-  --gc-4: linear-gradient(0deg, #F7CC76, #A473D0, #31ECE9);
+  --middle-color: var(--c-black-2);
+  --bottom-color: var(--c-black-3);
 
-    /* Dial Advanced Properties */
-    --outer-circle-thickness: 10; 
-    --inner-circle-thickness: 10;
-    
+  --gc-1: linear-gradient(
+    0deg,
+    var(--bottom-color),
+    var(--middle-color),
+    var(--top-color)
+  );
+  --gc-2: linear-gradient(
+    0deg,
+    var(--c-blue-1),
+    var(--c-black-2),
+    var(--c-black-3)
+  );
+  --gc-3: linear-gradient(0deg, #f7cc76, #a473d0, #31ece9);
+  --gc-4: linear-gradient(0deg, #f7cc76, #a473d0, #31ece9);
 
-    --outer-circle-color: var(--c-grey-1);
-    --inner-circle-color: var(--c-green-2);
+  --card-background-color: var(--gc-2); /*red*/
+  --box-color: #222; /*#222*/
 
-    /* This creates a split in inner circle */
-    /* Note: 
+  /* Dial Advanced Properties */
+  --outer-circle-thickness: var(--dial-thickness);
+  --inner-circle-thickness: var(--dial-thickness);
+
+  --outer-circle-color: var(--c-grey-1);
+  --inner-circle-color: var(--c-green-2);
+
+  /* This creates a split in inner circle */
+  /* Note: 
      *
      * if ( --inner-circle-segments == 0){
      *      #manully set
@@ -81,14 +104,14 @@
      * }
      * 
      */
-    /*
+  /*
     --inner-circle-segments: 2;
      
      --c-inner-circle-segments: calc( var(--dial_circumference)  / ( 2 * var(--inner-circle-segments)) ); 
-     */
+    */
+  /* No segments in inner circle */
 
-    /* No segments in inner circle */
-    --c-inner-circle-segments: var(--dial_circumference);
+  --c-inner-circle-segments: var(--dial_circumference);
 }
 
 .radial_dial {
@@ -98,19 +121,18 @@
   display: flex;
   justify-content: space-around;
   --dial_position: 0; /* 0 - This attribute shoule be updated from javascript according to sensor value*/
-  padding-top:40px;
+  padding-top: 10px;
 }
 
 /* radial_dial segment bounce during hover */
 .radial_dial .card {
   position: relative;
-  /*background: var(--gc-1);*/
-  background: var(--gc-2);
+  background: var(--card-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%; /* 250 px Radial Dial Card width*/
-  height: 80%; /* 300 px Radial Dial Card Height*/
+  width: 50%; /* 250 px Radial Dial Card width*/
+  height: 50%; /* 300 px Radial Dial Card Height*/
   border-radius: 50px; /* Radial Dial Card dimention square (small number) to ellipse (large number)*/
   text-align: center;
   font-family: sans-serif;
@@ -132,16 +154,16 @@
 
 .radial_dial .card:hover {
   transform: translateY(-10px);
-  radial_dial_box-shadow: 0 15px 35px rgb(0, 0, 0, 0.5);
+  box-shadow: 0 15px 35px rgb(0, 0, 0, 0.5);
 }
 
 .box {
   position: relative;
   width: var(--box-size); /*120px*/
   height: var(--box-size); /*120px*/
-  border-radius: 50%;
-  box-shadow: inset 0 0 50px #000;
-  background: #222;
+  border-radius: 50%; /*50%*/
+  box-shadow: inset 0 0 50px #000; /* 0 0 50px #000*/
+  background: var(--box-color); /*#222*/
   z-index: 1000;
 }
 
@@ -157,7 +179,7 @@
   border-radius: 50%;
   color: var(--dial-counter-text-color);
   font-weight: 600;
-  font-size: 40px;
+  font-size: calc(var(--dial_radius) * 0.66);
   transition: 0.5s;
 }
 
@@ -172,9 +194,9 @@
   align-items: center;
   border-radius: 50%;
   color: var(--dial-units-text-color);
-  font-size: 15px;
-  padding-top: 40px; /*40px*/
-  padding-left: 5px;
+  font-size: calc(var(--dial_radius) * 0.3); /*15px*/
+  padding-top: calc(0.6 * var(--dial_radius)); /*0.65*/
+  padding-left: 1px;
   transition: 0.5s;
 }
 
@@ -185,7 +207,7 @@
 
 .card:hover .box .value {
   color: #fff;
-  font-size: 50px;
+  font-size: calc(var(--dial_radius) * 0.7); /*50px*/
 }
 
 .card .box .text {
@@ -200,8 +222,8 @@
   border-radius: 50%;
   color: var(--dial-box-text-color);
   font-weight: 700;
-  font-size: 14px;
-  padding-top: 90px; /*79*/
+  font-size: calc(var(--dial_radius) * 0.3); /*14px*/
+  padding-top: calc(var(--dial_radius) * 1.4); /*1.5*/
   transition: 0.5s;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -213,18 +235,16 @@
 }
 
 svg {
+  width: 100%; /*100%*/
+  height: 100%; /*100%*/
   position: relative;
-  width: var(--dial_box_width); /*400px*/
-  height: var(--dial_box_height); /*400px*/
   z-index: 1000;
 }
 
 /* Circle Center Area (or) circle in the middle*/
 /* Consider this are .middle_circle*/
 svg circle {
-  width: 100%;
-  height: 100%;
-  fill: none;
+  fill: var(--middle-circle-color);
   stroke-linecap: round;
   transform: translate(var(--displace-left), var(--displace-down));
 }
@@ -234,7 +254,7 @@ svg circle {
   cx: var(--dial_pos_x);
   cy: var(--dial_pos_y);
   r: var(--dial_radius);
-  stroke: var(--outer-circle-color); 
+  stroke: var(--outer-circle-color);
 }
 /* Draw Circle 2 on top of Circle 1 ( Almost Same Property )*/
 /* Set the initial percentage movement for the dial*/
@@ -243,15 +263,20 @@ svg circle {
   cx: var(--dial_pos_x);
   cy: var(--dial_pos_y);
   r: var(--dial_radius);
-  
+
   /* Create segments in circle like clock */
   stroke-dasharray: var(--c-inner-circle-segments);
-  
+
   /* Create segments in circle like clock */
-  --meter-abs-percentage-increase: calc( var(--dial_position) * var(--dial_one_percent) );
-  --meter-reading-increment-forward: calc(var(--dial_zero_value) - var(--meter-abs-percentage-increase));;
-  --meter-reading-increment-reverse: calc(var(--dial_zero_value) + var(--meter-abs-percentage-increase));
-  stroke-dashoffset:var(--meter-reading-increment-forward);
+  --meter-abs-percentage-increase: calc(
+    var(--dial_position) * var(--dial_one_percent)
+  );
+  --meter-reading-increment-forward: calc(
+    var(--dial_zero_value) - var(--meter-abs-percentage-increase)
+  );
+  --meter-reading-increment-reverse: calc(
+    var(--dial_zero_value) + var(--meter-abs-percentage-increase)
+  );
+  stroke-dashoffset: var(--meter-reading-increment-forward);
   stroke: var(--inner-circle-color);
 }
-

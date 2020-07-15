@@ -5,7 +5,7 @@
 
 ## Example List
 
-#### Radial Dial ( examples/radial_dial/ )
+#### Radial Dial ( examples/radial_dial_dynamic_values_calc/ )
 
 ![alt text](images/radial_dial.gif)
 
