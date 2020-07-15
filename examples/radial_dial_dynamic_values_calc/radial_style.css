@@ -26,14 +26,37 @@
   --c-grey-6: #777;
   --c-green-1: #1e8e10;
   --c-green-2: #118e32;
+  --card-shape-circular: 100%;
+  --card-shape-square: 0%;
+  --card-shape-rounded-edge: 10%;
+  /*########################### MAIN USER CONFIGURABLE VALUES #########################*/
+  /* like gotoxy() in c/c++ [ move with respect to parent's position ]*/
+  --radial_dial_pos_x: 200px;
+  --radial_dial_pos_y: 40px;
 
-  --dial_radius: 90px; /*70*/
+  --dial_radius: 100px; /*70*/
+  --dial-thickness: 10px;
+  /* Choose:
+    --card-shape-circular -> creates a circular card
+    --card-shape-square -> creates a square card
+    --card-shape-rounded-edge -> creates a rounded edge card
+  */
+  --card-shape: var(--card-shape-rounded-edge);
 
-  --dial_box_width: calc(7 * var(--dial_radius));
-  --dial_box_height: calc(7 * var(--dial_radius));
+  /*####################################################################################*/
+
+  --card-padding-around: calc(2.5 * var(--dial_radius));
+
+  --dial_box_width: calc(
+    (4 * var(--dial_radius)) + (2 * var(--dial-thickness)) +
+      var(--card-padding-around)
+  );
+  --dial_box_height: calc(
+    (4 * var(--dial_radius)) + (2 * var(--dial-thickness)) +
+      var(--card-padding-around)
+  );
   --dial-box-text-color: var(--c-grey-6);
   --pi: 3.15; /*3.1415*/
-  --dial-thickness: 10px;
   --dial_circumference: calc(2 * var(--dial_radius) * var(--pi));
   --dial_one_percent: calc(var(--dial_circumference) / 100);
 
@@ -121,7 +144,8 @@
   display: flex;
   justify-content: space-around;
   --dial_position: 0; /* 0 - This attribute shoule be updated from javascript according to sensor value*/
-  padding-top: 10px;
+  padding-top: var(--radial_dial_pos_y);
+  padding-left: var(--radial_dial_pos_x);
 }
 
 /* radial_dial segment bounce during hover */
@@ -133,7 +157,9 @@
   align-items: center;
   width: 50%; /* 250 px Radial Dial Card width*/
   height: 50%; /* 300 px Radial Dial Card Height*/
-  border-radius: 50px; /* Radial Dial Card dimention square (small number) to ellipse (large number)*/
+  border-radius: var(
+    --card-shape
+  ); /* Radial Dial Card dimention square (small number) to ellipse (large number)*/
   text-align: center;
   font-family: sans-serif;
   overflow: hidden;
@@ -230,6 +256,9 @@
   transition: 0.5s;
 }
 
+.card:hover .box .text {
+  color: #fff;
+}
 .card:hover .box .text {
   color: #fff;
 }
