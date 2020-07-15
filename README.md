@@ -36,3 +36,8 @@
 #### Radial Dial Type 2 ( examples/radial_dial_type2 )
 
 ![alt text](images/radial_dial_type2.png)
+
+#### Circular Counter  ( examples/css_circular_counter )
+
+![alt text](images/circular_counter.png)
+
