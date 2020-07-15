@@ -29,6 +29,10 @@
 
 ![alt text](images/css_3x3_square_grids.png)
 
-#### 3x3 CSS Responsive Grids ( examples/css_grid_n_radial_dials_v1 )
+#### CSS grid and radial dials ( examples/css_grid_n_radial_dials_v1 )
 
 ![alt text](images/css_grid_n_radial_dials_v1.png)
+
+#### Radial Dial Type 2 ( examples/radial_dial_type2 )
+
+![alt text](images/radial_dial_type2.png)
