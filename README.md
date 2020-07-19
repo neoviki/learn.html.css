@@ -41,3 +41,7 @@
 
 ![alt text](images/circular_counter.png)
 
+
+#### Volume Slider  ( examples/css_volume_slider )
+
+![alt text](images/volume_slider.png)

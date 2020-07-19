@@ -1,0 +1,91 @@
+/*
+   Author: Viki
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --color-green1: #00fd0a;
+  --color-green2: #39ff14;
+  --color-pink1: #dc14ff;
+  --color-pink2: #ff4da6;
+  --color-pink3: #e60073;
+  --color-pink4: #ff1177;
+  --color-blue: #228dff;
+  --color-yellow: #ffdd1b;
+  --color-green3: #b6ff00;
+  --color-orange1: #ff9900;
+  --color-pink5: #ff00de;
+  --color-pink6: #ff1177;
+  --color-white1: #fff;
+  --color-black1: #000;
+  --color-black2: #151515;
+  --color-black3: #111;
+  --base-color: var(--color-orange1);
+  --bar-width: 500px; /*400px*/
+  --bar-height: 15px; /*15px*/
+  --i-bar-width: calc(0px - var(--bar-width));
+  --x-offset: calc(var(--i-bar-width) - 10px); /*-407px*/
+  --y-offset: 0px;
+  --blur-radius: 0;
+  --spread-radius: var(--bar-width); /*400*/
+  --range-value-color: #999; /* #999 */
+  --slider-thumb-width: 15px;
+  --slider-thumb-height: 15px;
+  --slider-thumb-radius: 10%; /* Lesser value = Square; Highter Value = Circle*/
+  --slider-thumb-border: 4px;
+  --body-bg-color: var(--color-white1);
+  --slider-thumb-border-color: #333; /*#332*/
+  --slider-inner-color: #fff; /*#111*/
+  --slider-inner-shadow-color: #000;
+  --slider-inner-shadow-radius: 10px; /*5px*/
+  --slider-outer-shadow-color: #000;
+  --slider-outer-shadow-radius: 10px; /* 5px */
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--body-bg-color);
+}
+
+div {
+  position: relative;
+}
+
+#range_slider_1 {
+  position: relative;
+  display: block;
+  text-align: center;
+  font-size: 6em;
+  color: var(--range-value-color);
+  font-weight: 400;
+}
+
+.range {
+  width: var(--bar-width);
+  height: var(--bar-height);
+  -webkit-appearance: none;
+  background: var(--slider-inner-color);
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 0 0 var(--slider-inner-shadow-radius)
+      var(--slider-inner-shadow-color),
+    0 0 var(--slider-outer-shadow-radius) var(--slider-outer-shadow-color);
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: var(--slider-thumb-width);
+  height: var(--slider-thumb-height);
+  border-radius: var(--slider-thumb-radius);
+  background: var(--base-color);
+  border: var(--slider-thumb-border) solid var(--slider-thumb-border-color);
+  box-shadow: var(--x-offset) var(--y-offset) var(--blur-radius)
+    var(--spread-radius) var(--base-color);
+}
