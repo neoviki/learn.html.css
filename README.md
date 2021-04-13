@@ -45,3 +45,11 @@
 #### Volume Slider  ( examples/css_volume_slider )
 
 ![alt text](images/volume_slider.png)
+
+#### Responsive Navbar ( examples/navbar_4 )
+
+![alt text](images/nav4.png)
+
+#### Responsive Navbar ( examples/navbar_8 )
+
+![alt text](images/nav8.png)
