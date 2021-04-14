@@ -53,3 +53,19 @@
 #### Responsive Navbar ( examples/navbar_8 )
 
 ![alt text](images/nav8.png)
+
+#### Gradient ( example/gradient/blue1.html	 )
+
+![alt text](images/grad_blue1.png)
+
+#### Gradient ( example/gradient/blue2.html	 )
+
+![alt text](images/grad_blue2.png)
+
+#### Gradient ( example/gradient/darkblue1.html )
+
+![alt text](images/grad_darkblue1.png)
+
+#### Gradient ( example/gradient/grey.html )
+
+![alt text](images/grad_grey.png)
