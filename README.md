@@ -9,6 +9,11 @@
 
 ![alt text](images/radial_dial.gif)
 
+#### Drag Items ( examples/drag_items/ )
+
+![alt text](images/drag_items.gif)
+
+
 #### Neon Button ( examples/neon_button_js_control/ )
 
 ![alt text](images/neon_button.gif)
