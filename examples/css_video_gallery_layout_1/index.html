@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      :root {
+        --layer1-color: #ffffff;
+        --layer2-color: #12355b;
+        --left-column-color: #ffffff;
+        /* --right-column-color: #fff07c; */
+        --right-column-color: var(--layer1-color);
+
+        --c-olive-green: #afc549;
+        --c-light-grey: #a2a3a7;
+        --c-light-yellow: #e9bc00;
+        --c-white: #fff;
+        --c-black: #000;
+
+        --page_bg_color: var(--layer1-color);
+        /*##################  GRID DIMENSION #################*/
+
+        /* Square Grid    */
+        --grid-cell-width: 320px;
+        --grid-cell-height: 200px;
+
+        /* Square Grid   */
+        --grid-cell-row-gap: 10px;
+        --grid-cell-col-gap: 10px;
+        --grid-cell-padding: 10px;
+
+        /*##################  GRID COLORS    #################*/
+
+        /* Square Grid */
+        --grid-cell-bg-color: var(--right-column-color);
+
+        /*##################  GRID ITEM COLORS #################*/
+
+        /* Header Grid Items   */
+        --header-item-fg-color: var(--c-white);
+        --header-item-bg-color: var(--c-olive-green);
+        --header-item-border-color: var(--c-white);
+
+        /* Square Grid Item  */
+        --grid-cell-item-bg-color: var(--c-light-grey);
+        --grid-cell-item-fg-color: var(--c-white);
+        --grid-cell-item-border-color: var(--c-white);
+
+        /*##################  GRID ITEM BORDERS #################*/
+        /* Header Grid Items */
+        --header-item-border-thickness: 0px;
+
+        /* Square Grid Items */
+        --grid-cell-item-border-thickness: 0px;
+      }
+
+      .square-grid {
+        display: grid;
+        position: relative;
+        grid-column-gap: var(--grid-cell-col-gap);
+        grid-row-gap: var(--grid-cell-row-gap);
+        --n-col-grids: 1;
+        /*3 columns [ each auto correspond to one column ]*/
+        grid-template-columns: repeat(
+          var(--n-col-grids),
+          var(--grid-cell-width)
+        );
+        background-color: var(--grid-cell-bg-color);
+        align-items: center;
+        justify-content: center;
+        padding: var(--grid-cell-padding);
+      }
+
+      .square-grid-item {
+        display: flex;
+        color: var(--grid-cell-item-fg-color);
+        background-color: var(--grid-cell-item-bg-color);
+        border: var(--grid-cell-item-border-thickness) solid
+          var(--grid-cell-item-border-color);
+        height: var(--grid-cell-height); /* grid height*/
+        width: auto;
+        padding: 20px; /* pading for text inside grid*/
+        font-size: 40px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .rectangle {
+        margin: 10px;
+        width: 800px;
+        height: 500px;
+        background: blue;
+      }
+      /* Property for screen width less than or equal to 700px */
+      @media (max-width: 1300px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+          --grid-cell-width: 320px;
+          --grid-cell-height: 200px;
+        }
+      }
+
+      /* Property for screen width less than or equal to 700px */
+      @media (max-width: 1200px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+          --grid-cell-width: 250px;
+          --grid-cell-height: 160px;
+        }
+        .rectangle {
+          width: 610px;
+          height: 420px;
+        }
+      }
+
+      /* Property for screen width less than or equal to 700px */
+      @media (max-width: 1100px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+          --grid-cell-width: 230px;
+          --grid-cell-height: 150px;
+        }
+        .rectangle {
+          width: 580px;
+          height: 380px;
+        }
+      }
+
+      /* Property for screen width less than or equal to 700px */
+      @media (max-width: 1000px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+
+          --grid-cell-width: 200px;
+          --grid-cell-height: 140px;
+        }
+        .rectangle {
+          width: 560px;
+          height: 360px;
+        }
+      }
+
+      /* Property for screen width less than or equal to 700px */
+      @media (max-width: 900px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+          --grid-cell-width: 180px;
+          --grid-cell-height: 130px;
+        }
+        .rectangle {
+          width: 500px;
+          height: 350px;
+        }
+      }
+
+      /* Property for screen width less than or equal to 700px */
+      @media (max-width: 800px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+          --grid-cell-width: 160px;
+          --grid-cell-height: 110px;
+        }
+        .rectangle {
+          width: 450px;
+          height: 300px;
+        }
+      }
+
+      /* Property for screen width less than or equal to 700px */
+      @media (max-width: 700px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+          --grid-cell-width: 150px;
+          --grid-cell-height: 100px;
+        }
+
+        .header-grid {
+          grid-template-columns: 1fr;
+        }
+        .header-grid-item {
+          font-size: 20px;
+        }
+        .rectangle {
+          width: 400px;
+          height: 250px;
+        }
+      }
+
+      /* Property for screen width less than or equal to 500px */
+      @media (max-width: 500px) {
+        /*Property for square-grid Class*/
+        .square-grid {
+          /*number of grid cells along each column - calc() result is always integer*/
+          --n-col-grids: 1;
+        }
+        .rectangle {
+          width: 350px;
+          height: 220px;
+        }
+      }
+
+      html,
+      body {
+        height: 98%;
+        background: var(--layer1-color);
+      }
+      .col-left {
+        float: left;
+        width: 69%;
+        padding-left: 1%;
+        background-color: var(--left-column-color);
+        height: 100%;
+        overflow: auto;
+      }
+      .col-right {
+        float: left;
+        width: 28%;
+        background: var(--right-column-color);
+        height: 100%;
+        padding-left: 1%;
+        margin-left: 1%;
+        overflow-y: auto;
+        overflow-x: visible;
+      }
+      /* Works on Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--layer2-color) var(--layer1-color);
+      }
+
+      /* Works on Chrome, Edge, and Safari */
+      *::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      *::-webkit-scrollbar-track {
+        background: var(--layer1-color);
+      }
+
+      *::-webkit-scrollbar-thumb {
+        background-color: var(--layer2-color);
+        border-radius: 20px;
+        border: 3px solid var(--layer1-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="col-left">
+      <div class="rectangle"></div>
+    </div>
+    <div class="col-right">
+      <div class="square-grid">
+        <div class="square-grid-item">1</div>
+        <div class="square-grid-item">2</div>
+        <div class="square-grid-item">3</div>
+        <div class="square-grid-item">4</div>
+        <div class="square-grid-item">5</div>
+        <div class="square-grid-item">6</div>
+        <div class="square-grid-item">7</div>
+        <div class="square-grid-item">8</div>
+        <div class="square-grid-item">9</div>
+      </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
