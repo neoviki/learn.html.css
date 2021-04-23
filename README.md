@@ -77,5 +77,5 @@
 
 #### Search Box ( example/search_box )
 
-![alt text]( example/search_box/demo.gif )
+![alt text]( examples/search_box/demo.gif )
 
