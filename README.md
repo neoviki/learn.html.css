@@ -74,3 +74,8 @@
 #### Gradient ( example/gradient/grey.html )
 
 ![alt text](images/grad_grey.png)
+
+#### Search Box ( example/search_box )
+
+![alt text]( example/search_box/demo.gif )
+
